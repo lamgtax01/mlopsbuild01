@@ -1,5 +1,5 @@
 # Processing Instance 
-processing_instance_type =  "ml.m5.xlarge"
+processing_instance_type =  "ml.m4.xlarge"
 processing_instance_count = 1
 
 # Training Instance 
