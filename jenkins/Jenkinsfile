@@ -15,8 +15,7 @@ pipeline {
     }
     stage('Update and Run Sagemaker Pipeline') {
       steps {
-        echo "Current folder:"  
-        sh pwd 
+        echo "Current folder:" 
         withAWS(credentials:"${AWS_CREDENTIAL}",region:"${AWS_REGION}") {           
           sh '''export PATH="$HOME/.local/$SAGEMAKER_PROJECT_NAME_ID/bin:$PATH"
           export PYTHONPATH="$HOME/.local/$SAGEMAKER_PROJECT_NAME_ID:$PYTHONPATH"
