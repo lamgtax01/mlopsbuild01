@@ -5,6 +5,8 @@ from sagemaker.inputs import TrainingInput
 
 from sagemaker.debugger import rule_configs, Rule, DebuggerHookConfig
 
+import param
+
 def get_modeling_estimator(bucket,
                            prefix,
                            s3_modeling_code_uri,
@@ -38,8 +40,8 @@ def get_modeling_estimator(bucket,
     xgb = sagemaker.estimator.Estimator(image_uri=docker_image_name,
                                         role=role,
                                         hyperparameters=hyperparams,
-                                        instance_count=1, 
-                                        instance_type='ml.m4.xlarge',
+                                        instance_count=param.training_instance_count, 
+                                        instance_type=param.training_instance_type,
                                         output_path=f's3://{bucket}/{prefix}/output',
                                         base_job_name='pipeline-xgboost-customer-churn',
                                         sagemaker_session=sm_sess,
